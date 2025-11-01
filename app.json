@@ -1,0 +1,24 @@
+{
+  "name": "DeepFake Detection System",
+  "description": "Advanced AI-powered deepfake detection with theoretical explanations",
+  "repository": "https://github.com/dimpalmang20/Deepfake_Tool",
+  "keywords": ["deepfake", "ai", "detection", "fastapi", "python"],
+  "image": "heroku/python",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "PORT": {
+      "description": "Port for the web server",
+      "value": "8000"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}

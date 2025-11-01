@@ -274,3 +274,4 @@ DeepFake_Detector/
 **Example**: `https://deepfake-detector-123.up.railway.app`
 
 **Just deploy and start detecting!** 🎯
+

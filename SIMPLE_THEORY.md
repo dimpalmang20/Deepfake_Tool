@@ -165,3 +165,4 @@ The AI learns these differences and can spot fakes!
 **Technical**: CNN + Frequency Analysis + Attention Mechanisms = Detection
 
 Your DeepFake Detection System uses advanced AI to protect against fake media! 🛡️
+
