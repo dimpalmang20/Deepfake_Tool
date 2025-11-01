@@ -1,0 +1,66 @@
+[
+  {
+    "image_path": "data/images/real/real_000.jpg",
+    "result": {
+      "prediction": "real",
+      "confidence": 0.5019886493682861,
+      "probabilities": {
+        "real": 0.5019886493682861,
+        "fake": 0.4980113208293915
+      },
+      "frequency_features": {
+        "high_pass_variance": 1470.5155128719705,
+        "sobel_mean": 191.94576460931575,
+        "laplacian_variance": 38933.65499897909
+      }
+    }
+  },
+  {
+    "image_path": "data/images/fake/fake_000.jpg",
+    "result": {
+      "prediction": "real",
+      "confidence": 0.5047153234481812,
+      "probabilities": {
+        "real": 0.5047153234481812,
+        "fake": 0.49528464674949646
+      },
+      "frequency_features": {
+        "high_pass_variance": 15.361844006800146,
+        "sobel_mean": 34.111545979808085,
+        "laplacian_variance": 264.9873444800673
+      }
+    }
+  },
+  {
+    "image_path": "data/images/real/real_001.jpg",
+    "result": {
+      "prediction": "real",
+      "confidence": 0.5017195343971252,
+      "probabilities": {
+        "real": 0.5017195343971252,
+        "fake": 0.49828049540519714
+      },
+      "frequency_features": {
+        "high_pass_variance": 1481.959354459023,
+        "sobel_mean": 190.9728720285641,
+        "laplacian_variance": 39450.45614180272
+      }
+    }
+  },
+  {
+    "image_path": "data/images/fake/fake_001.jpg",
+    "result": {
+      "prediction": "real",
+      "confidence": 0.5049524307250977,
+      "probabilities": {
+        "real": 0.5049524307250977,
+        "fake": 0.49504756927490234
+      },
+      "frequency_features": {
+        "high_pass_variance": 13.588407274188226,
+        "sobel_mean": 34.040616658320104,
+        "laplacian_variance": 223.38947792124722
+      }
+    }
+  }
+]
