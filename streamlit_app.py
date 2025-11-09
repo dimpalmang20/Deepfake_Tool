@@ -197,3 +197,8 @@ with st.sidebar:
 # Footer
 st.markdown("---")
 st.markdown("**DeepFake Detection System** | Production Ready | Deployed on Streamlit Cloud")
+
+
+
+
+

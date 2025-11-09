@@ -146,3 +146,8 @@ https://deepfake-tool-production-xxxx.up.railway.app
 
 **Share your deployment link and start detecting deepfakes!** 🚀
 
+
+
+
+
+

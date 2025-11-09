@@ -41,10 +41,83 @@ app.add_middleware(
 )
 
 # Serve static files
-if os.path.exists("web_interface.html"):
-    @app.get("/", response_class=HTMLResponse)
-    async def read_root():
-        return FileResponse("web_interface.html")
+# Handle both local and Vercel deployment paths
+def get_html_path():
+    """Get the path to web_interface.html, handling different deployment scenarios."""
+    # Try multiple possible paths
+    possible_paths = [
+        "web_interface.html",
+        Path(__file__).parent / "web_interface.html",
+        Path(__file__).parent.parent / "web_interface.html",
+    ]
+    for path in possible_paths:
+        if os.path.exists(path):
+            return str(path)
+    return None
+
+html_path = get_html_path()
+
+@app.get("/", response_class=HTMLResponse)
+async def read_root():
+    """Serve the web interface."""
+    if html_path and os.path.exists(html_path):
+        return FileResponse(html_path)
+    else:
+        # Fallback: Return basic HTML if file not found
+        return HTMLResponse("""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>DeepFake Detection System</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>
+                body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f5f5f5; }
+                .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+                h1 { color: #333; }
+                .btn { background: #007bff; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; margin: 10px; font-size: 16px; }
+                .btn:hover { background: #0056b3; }
+                input[type="file"] { margin: 20px 0; }
+                .result { margin: 20px 0; padding: 20px; border-radius: 5px; display: none; }
+                .real { background: #d4edda; border: 1px solid #c3e6cb; }
+                .fake { background: #f8d7da; border: 1px solid #f5c6cb; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>🔍 DeepFake Detection System</h1>
+                <p>Advanced AI-powered detection with theoretical explanations</p>
+                <input type="file" id="fileInput" accept="image/*,video/*">
+                <br>
+                <button class="btn" onclick="detectDeepfake()">🔍 Detect Deepfake</button>
+                <div id="result" class="result">
+                    <h3 id="resultTitle"></h3>
+                    <p id="resultText"></p>
+                </div>
+            </div>
+            <script>
+                async function detectDeepfake() {
+                    const fileInput = document.getElementById('fileInput');
+                    const file = fileInput.files[0];
+                    if (!file) { alert('Please select a file first'); return; }
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    try {
+                        const response = await fetch('/detect/image', { method: 'POST', body: formData });
+                        const result = await response.json();
+                        const resultDiv = document.getElementById('result');
+                        resultDiv.style.display = 'block';
+                        resultDiv.className = 'result ' + (result.prediction === 'real' ? 'real' : 'fake');
+                        document.getElementById('resultTitle').textContent = result.prediction === 'real' ? '✅ REAL' : '⚠️ FAKE';
+                        document.getElementById('resultText').textContent = `Confidence: ${(result.confidence * 100).toFixed(1)}%`;
+                    } catch (error) {
+                        alert('Error: ' + error.message);
+                    }
+                }
+            </script>
+        </body>
+        </html>
+        """)
 
 # Simple DeepFake Detection Model
 class SimpleDeepFakeDetector(nn.Module):
@@ -295,4 +368,9 @@ async def model_info():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
+
+
+
+
+
 

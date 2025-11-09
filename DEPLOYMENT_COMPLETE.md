@@ -275,3 +275,8 @@ DeepFake_Detector/
 
 **Just deploy and start detecting!** 🎯
 
+
+
+
+
+

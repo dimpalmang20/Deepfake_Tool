@@ -201,3 +201,8 @@ https://deepfake-detector.onrender.com
 - ✅ 100% working
 
 **Choose any platform and deploy in minutes!** 🎉
+
+
+
+
+

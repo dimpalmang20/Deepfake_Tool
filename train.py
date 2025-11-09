@@ -166,6 +166,7 @@ class DeepFakeDetector(nn.Module):
             # Extract features from all frames
             features = self.backbone(x)  # (B*T, backbone_features)
             
+            
             # Reshape back to (B, T, features)
             features = features.view(batch_size, -1, features.shape[1])
             

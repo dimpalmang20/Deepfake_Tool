@@ -1,0 +1,24 @@
+# Vercel Deployment Requirements
+# Optimized for Python 3.12 and serverless deployment
+# NOTE: PyTorch is very large and may exceed Vercel's size limits
+
+# Core ML and Deep Learning (Python 3.12 compatible)
+torch>=2.2.0
+torchvision>=0.17.0
+
+# Web Framework
+fastapi==0.103.1
+uvicorn==0.23.2
+python-multipart==0.0.6
+aiofiles==23.1.0
+
+# Data Processing (Python 3.12 compatible)
+numpy>=1.26.0
+
+# Computer Vision (headless version for serverless)
+opencv-python-headless>=4.8.0
+Pillow>=10.0.0
+
+# Note: Additional dependencies from requirements_clean.txt may be needed
+# but are excluded here to reduce size. Add them if your app requires them.
+

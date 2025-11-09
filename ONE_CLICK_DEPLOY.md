@@ -50,3 +50,8 @@ https://huggingface.co/spaces/yourusername/deepfake-detector
 - ✅ 100% working project
 
 **Pick one and deploy now!** 🚀
+
+
+
+
+
